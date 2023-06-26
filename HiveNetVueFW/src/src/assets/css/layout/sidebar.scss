@@ -1,0 +1,326 @@
+/* 左边菜单栏的样式 */
+@import '../themes.scss';
+@import '../mixin.scss';
+
+// Start -----------左侧菜单栏容器-----------
+.sidebar-container {
+  &.el-aside {
+    position: relative; // 支持改变大小组件的定位
+    height: inherit;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    background-color: $sidebarTheme; // 左侧菜单设置背景跟菜单一致
+    z-index: 1000;
+
+    // 菜单滚动区域的高度设置
+    .el-scrollbar {
+      height: calc(100vh - #{$headerHeight});
+    }
+
+    .el-scrollbar:first-child {
+      // 通过判断元素是否第一个，检查是否有logo
+      height: 100vh;
+    }
+  }
+}
+
+// 移动设备情况下，左侧菜单的隐藏和显示处理
+.mobile {
+  .sidebar-container {
+    &.el-aside {
+      display: none;
+
+      &.sidebar-opened {
+        display: unset;
+      }
+    }
+  }
+}
+
+// End -----------左侧菜单栏容器-----------
+
+// Start -----------左侧菜单顶端的logo样式-----------
+.sidebar-container {
+  .el-logo {
+    display: flex;
+    align-items: center;
+    height: $headerHeight;
+    padding: 10px 4px 10px 16px;
+
+    img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+    }
+
+    .title {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      margin-left: 8px;
+      @include ellipsis;
+
+      &.is-hide {
+        display: none;
+      }
+    }
+  }
+}
+
+// End -----------左侧菜单顶端的logo样式-----------
+
+
+// Start -----------正常情况左侧菜单样式-----------
+.sidebar-container {
+  .el-menu {
+    height: inherit;
+    background-color: $sidebarTheme;
+    border-right: none;
+
+    &.no-transition {
+      transition: none;
+    }
+
+    .el-menu-item {
+      color: $sidebarColor;
+      padding-right: 0;
+      @include ellipsis;
+
+      &:hover {
+        background-color: $systemThemeLight2;
+      }
+
+      &.is-active {
+        color: #ffffff;
+        background-color: $systemTheme;
+      }
+    }
+
+    .el-sub-menu {
+      .el-menu-item {
+        min-width: 0;
+      }
+
+      &.is-active {
+        &>.el-sub-menu__title {
+          color: #ffffff;
+        }
+      }
+    }
+
+    .el-menu-item-group {
+      background-color: $sidebarThemeGroup;
+    }
+
+    .el-sub-menu__title {
+      color: $sidebarColor;
+
+      &:hover {
+        background-color: $systemThemeLight2;
+      }
+
+      &>span {
+        display: inline-block;
+        max-width: calc(100% - 45px);
+        @include ellipsis;
+      }
+    }
+  }
+}
+
+// End -----------正常情况左侧菜单样式-----------
+
+
+// Start -----------背景色为白色时左侧菜单样式-----------
+.sidebar--white {
+  .sidebar-container {
+
+    $menu-color: $navbarColor;
+
+    .el-menu-item {
+      color: $menu-color;
+
+      &:hover {
+        color: #ffffff;
+        background-color: $systemThemeLight2;
+      }
+
+      &.is-active {
+        background-color: $systemThemeLight8;
+        color: $systemTheme;
+      }
+    }
+
+    &:not(.layout-type-3) {
+      .el-menu:not(.el-menu--collapse):not(.el-menu--horizontal) {
+        .el-menu-item {
+          &.is-active {
+            border-right: 3px solid $systemTheme;
+          }
+        }
+      }
+    }
+
+    .el-sub-menu__title {
+      color: $menu-color;
+
+      &:hover {
+        color: #ffffff;
+        background-color: $systemThemeLight2;
+
+        i {
+          color: inherit;
+        }
+      }
+    }
+
+    .el-menu-item-group {
+      background-color: #ffffff;
+    }
+
+    .el-sub-menu {
+      &.is-active {
+        &>.el-sub-menu__title {
+          color: $systemTheme;
+
+          >i {
+            color: inherit;
+          }
+
+          &:hover {
+            color: #ffffff;
+            background-color: $systemThemeLight2;
+
+            i {
+              color: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// End -----------背景色为白色时左侧菜单样式-----------
+
+// Start -----------弹出菜单的通用样式-----------
+.sidebar-container {
+  .el-menu--popup {
+
+    .el-menu-item,
+    .el-sub-menu .el-sub-menu__title {
+      height: 46px;
+      line-height: 46px;
+    }
+  }
+}
+
+// End -----------弹出菜单的通用样式-----------
+
+// Start -----------左侧菜单收起的样式-----------
+.sidebar-container {
+  .el-menu--collapse {
+    .el-menu-item {
+      &.is-active {
+        background-color: inherit;
+        box-shadow: 3px 0 0 $systemTheme inset;
+        border-right: 0;
+        color: $systemTheme;
+
+        i {
+          color: inherit !important;
+        }
+      }
+    }
+
+    .el-sub-menu {
+      &.is-active {
+        .el-sub-menu__title {
+          color: $systemTheme;
+          box-shadow: 3px 0 0 $systemTheme inset;
+
+          i {
+            color: inherit;
+          }
+        }
+      }
+
+      // 不显示右箭头
+      .el-sub-menu__title {
+        .el-sub-menu__icon-arrow {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// End -----------左侧菜单收起的样式-----------
+
+// Start -----------左侧菜单浅色背景情况下的特殊样式-----------
+.sidebar--white {
+  &.layout-light-color {
+    .sidebar-container {
+      .el-logo {
+        span {
+          color: $systemTheme;
+        }
+      }
+    }
+  }
+
+  .sidebar-container {
+    .el-menu {
+      border-right: $border;
+    }
+  }
+}
+
+
+// End -----------左侧菜单浅色背景情况下的特殊样式-----------
+
+// Start -----------浅色背景且夜间模式的样式-----------
+.night-mode {
+  .sidebar-container {
+    .el-logo {
+      .title {
+        color: var(--navbarColor);
+      }
+    }
+  }
+
+  &.sidebar--white {
+    .sidebar-container {
+      .el-menu-item {
+        &.is-active {
+          background-color: $systemThemeLight2;
+          color: #ffffff;
+        }
+      }
+
+      .el-sub-menu {
+        &.is-active {
+          &>.el-sub-menu__title {
+            color: #ffffff;
+
+            >i {
+              color: inherit;
+            }
+          }
+        }
+      }
+    }
+
+    &.layout-light-color {
+      .sidebar-container {
+        .el-logo {
+          span {
+            color: var(--navbarColor);
+          }
+        }
+      }
+    }
+  }
+}
+
+// End -----------浅色背景且夜间模式的样式-----------

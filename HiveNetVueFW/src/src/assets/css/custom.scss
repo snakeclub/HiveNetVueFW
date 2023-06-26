@@ -1,0 +1,344 @@
+@import './themes.scss';
+
+:root {
+  // 覆盖element-plus的主题颜色
+  --el-color-primary: var(--systemThemeColor);
+  --el-color-primary-light-1: var(--systemThemeColorLight1);
+  --el-color-primary-light-2: var(--systemThemeColorLight2);
+  --el-color-primary-light-3: var(--systemThemeColorLight3);
+  --el-color-primary-light-4: var(--systemThemeColorLight4);
+  --el-color-primary-light-5: var(--systemThemeColorLight5);
+  --el-color-primary-light-6: var(--systemThemeColorLight6);
+  --el-color-primary-light-7: var(--systemThemeColorLight7);
+  --el-color-primary-light-8: var(--systemThemeColorLight8);
+  --el-color-primary-light-9: var(--systemThemeColorLight9);
+}
+
+// ----------全局设置按钮颜色设置----------
+.el-button--default {
+  &:hover {
+    background-color: var(--systemThemeColorLight8);
+    border-color: var(--systemThemeColorLight2);
+  }
+
+  &:active {
+    color: var(--systemThemeColorActive);
+    background-color: var(--systemThemeColorLight7);
+    border-color: var(--systemThemeColorLight2);
+  }
+}
+
+.el-button--primary {
+  --el-button-bg-color: var(--systemThemeColor);
+  --el-button-border-color: var(--systemThemeColor);
+  --el-button-hover-color: var(--systemThemeColorLight3);
+  --el-button-active-bg-color: var(--systemThemeColorActive);
+  --el-button-active-border-color: var(--systemThemeColorActive);
+
+  &:focus {
+    background-color: var(--systemThemeColor);
+  }
+
+  &:hover {
+    background-color: var(--systemThemeColorLight3);
+  }
+
+  &:active {
+    background-color: var(--systemThemeColorActive);
+    border-color: var(--systemThemeColorActive);
+  }
+
+  &.is-disabled {
+    background-color: var(--systemThemeColorLight6);
+    border-color: var(--systemThemeColorLight6);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: var(--systemThemeColorLight6);
+      border-color: var(--systemThemeColorLight6);
+    }
+  }
+}
+
+// ----------全局的表单对象通用设置----------
+.night-mode {
+  .el-form-item__label {
+    color: var(--label-font-color);
+  }
+}
+
+// ----------自定义的表单输入框颜色(把默认颜色修改掉), 需要在 el-form 上添加 custom-form 类名----------
+
+// 原样式增加告警信息的样式
+.el-form-item.is-error.is-warn {
+  --isWarnBorderColor: #E6A23C;
+
+  .el-input__wrapper {
+    box-shadow: 0 0 0 1px var(--isWarnBorderColor) inset;
+  }
+
+  .el-input__clear {
+    color: var(--isWarnBorderColor);
+  }
+
+  .el-input__validateIcon {
+    color: var(--isWarnBorderColor);
+  }
+
+  // textarea输入框
+  .el-textarea__inner {
+    box-shadow: 0 0 0 1px var(--isWarnBorderColor) inset
+  }
+
+  // 提示文字
+  .el-form-item__error {
+    color: var(--isWarnBorderColor);
+  }
+}
+
+.custom-form {
+  --isSuccessBgColor: #e1f3d8;
+  --isSuccessBorderColor: #67C23A;
+  --isErrorBgColor: #fde2e2;
+  --isErrorBorderColor: #f56c6c;
+  --isWarnBgColor: #faecd8;
+  --isWarnBorderColor: #E6A23C;
+
+  // 校验通过颜色, 如果在组件内部修改，需要增加 ::v-deep 进行样式穿透才能生效
+  .el-form-item.is-success {
+    .el-input__inner {
+      background: var(--isSuccessBgColor);
+    }
+
+    .el-input__wrapper {
+      background: var(--isSuccessBgColor);
+      box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
+      &.is-focus, &:hover {
+        box-shadow: 0 0 0 1px var(--isSuccessBorderColor) inset;
+      }
+    }
+
+    .el-input .el-input__count .el-input__count-inner {
+      background: var(--isSuccessBgColor);
+    }
+
+    .el-input__validateIcon {
+      color: var(--isSuccessBorderColor);
+    }
+
+    .el-input__clear {
+      color: var(--isSuccessBorderColor);
+    }
+
+    // textarea输入框
+    .el-textarea__inner {
+      background: var(--isSuccessBgColor);
+      box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
+      &.is-focus, &:hover {
+        box-shadow: 0 0 0 1px var(--isSuccessBorderColor) inset;
+      }
+    }
+  }
+
+  // 校验失败的颜色
+  .el-form-item.is-error {
+    .el-input__inner {
+      background: var(--isErrorBgColor);
+    }
+
+    .el-input__wrapper {
+      background: var(--isErrorBgColor);
+      box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
+      &.is-focus, &:hover {
+        box-shadow: 0 0 0 1px var(--isErrorBorderColor) inset;
+      }
+    }
+
+    .el-input .el-input__count .el-input__count-inner {
+      background: var(--isErrorBgColor);
+    }
+
+    .el-input__clear {
+      color: var(--isErrorBorderColor);
+    }
+
+    .el-input__validateIcon {
+      color: var(--isErrorBorderColor);
+    }
+
+    // textarea输入框
+    .el-textarea__inner {
+      background: var(--isErrorBgColor);
+      box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
+      &.is-focus, &:hover {
+        box-shadow: 0 0 0 1px var(--isErrorBorderColor) inset;
+      }
+    }
+
+    // 提示文字
+    .el-form-item__error {
+      color: var(--isErrorBorderColor);
+    }
+  }
+
+  // 警告类颜色设置
+  .el-form-item.is-error.is-warn {
+    .el-input__inner {
+      background: var(--isWarnBgColor);
+    }
+
+    .el-input__wrapper {
+      background: var(--isWarnBgColor);
+      box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
+      &.is-focus, &:hover {
+        box-shadow: 0 0 0 1px var(--isWarnBorderColor) inset;
+      }
+    }
+
+    .el-input .el-input__count .el-input__count-inner {
+      background: var(--isWarnBgColor);
+    }
+
+    .el-input__clear {
+      color: var(--isWarnBorderColor);
+    }
+
+    .el-input__validateIcon {
+      color: var(--isWarnBorderColor);
+    }
+
+    // textarea输入框
+    .el-textarea__inner {
+      background: var(--isWarnBgColor);
+      box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
+      &.is-focus, &:hover {
+        box-shadow: 0 0 0 1px var(--isWarnBorderColor) inset;
+      }
+    }
+
+    // 提示文字
+    .el-form-item__error {
+      color: var(--isWarnBorderColor);
+    }
+  }
+
+}
+
+// ----------通用展示页面的样式设置 start----------
+.web-main-container {
+  position: relative;
+  perspective: 100%; // 通过这个设置让子孙元素定位以父元素为坐标
+  display: block;
+  width: 100%;
+  overflow: auto; // 解决iframe出现双滚动条问题
+
+  // ----------表单的样式设置----------
+  .form-container {
+    width: auto;
+    margin: 10px;
+    text-align: center; // 让表单对象居中
+
+    .el-form {
+      width: 100%;
+      max-width: var(--editFormMaxWidth); // 控制最大显示
+      display: inline-block; // 配合父元素设置剧中
+      text-align: start; // 让表单元素不受居中影响
+
+      // 控制表单中Label的垂直位置
+      .el-form-item__label {
+        align-self: baseline;
+      }
+
+      // 解决element-plus的元素样式问题
+      .form-grid-item {
+        .el-input-number {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+}
+// ----------通用展示页面的样式设置 end----------
+
+
+// ----------自定义switch----------
+.custom-switch {
+  --before-text: '\5f00';
+  --after-text: '\5173';
+  $beforeText: var(--before-text);
+  $afterText: var(--after-text);
+
+  .el-switch__core {
+    position: relative;
+  }
+
+  &:not(.is-checked) .el-switch__core {
+    &::after {
+      content: $afterText;
+      position: absolute;
+      right: 5px;
+      top: -2px;
+      font-size: 12px;
+      color: #fff;
+    }
+  }
+
+  &.is-checked .el-switch__core {
+    &::before {
+      content: $beforeText;
+      position: absolute;
+      left: 5px;
+      top: -1px;
+      font-size: 12px;
+      color: #fff;
+    }
+  }
+}
+
+// ----------END-----------
+
+// ----------自定义card----------
+.el-card {
+  --el-card-border-radius: 2px;
+  --el-card-padding: 12px;
+
+  .el-card__header {
+    padding: 0 var(--el-card-padding);
+    font-size: 0.875rem;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+// ----------END-----------
+.el-row.justify-between {
+  margin-left: var(--gutter) !important;
+  margin-right: var(--gutter) !important;
+}
+
+.night-mode {
+  $itemColor: #151515;
+  --el-drawer-background-color: #151515;
+
+  .el-drawer {
+    background-color: var(--el-drawer-background-color);
+  }
+
+  .el-divider__text {
+    background-color: var(--el-drawer-background-color);
+    color: inherit;
+  }
+
+  .el-switch__label:not(.is-active) {
+    color: $navbarColor;
+  }
+
+  .el-card {
+    background-color: $itemColor;
+    color: $navbarColor;
+  }
+}

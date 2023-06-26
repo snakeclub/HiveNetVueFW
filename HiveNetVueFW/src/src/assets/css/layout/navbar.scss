@@ -1,0 +1,593 @@
+/* 顶端导航栏的样式 */
+@import '../themes.scss';
+@import '../mixin.scss';
+
+
+// Start -----------顶端导航栏样式-----------
+.navbar-container {
+  &.el-header {
+    height: $headerHeight;
+    background-color: $navbarTheme;
+    color: #ffffff;
+    padding: 0;
+
+    // 顶端内容样式
+    .header-content {
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+      line-height: calc(#{$headerHeight} - 4px);
+
+      // 顶端导航栏图标样式
+      .navbar-icon {
+        cursor: pointer;
+        font-size: #{$navbarIconSize};
+        width: $navbarIconSize !important;
+        height: $navbarIconSize !important;
+        color: #ffffff;
+        fill: #ffffff;
+        vertical-align: middle;
+      }
+
+      // 顶端导航栏的链接对象样式
+      .navbar-link {
+        vertical-align: unset;
+        color: #ffffff;
+
+        span {
+          vertical-align: middle;
+        }
+
+        span span {
+          font-size: $navbarIconSize !important;
+          // 内部文本与图标间隔
+          margin-left: 4px;
+        }
+      }
+
+      .header-left {
+        // 顶端导航栏左边对象容器
+        height: 100%;
+        width: fit-content;
+        max-width: 100%;
+        min-width: 20px;
+        display: inline-flex;
+        flex-wrap: nowrap;
+
+        .hamburger-container {
+          // 折叠/打开菜单图标
+          height: 100%;
+          float: left;
+          cursor: pointer;
+          transition: background .3s;
+          -webkit-tap-highlight-color: transparent;
+
+          &:hover {
+            background: rgba(0, 0, 0, .025)
+          }
+        }
+
+        .breadcrumb-container {
+          // 面包屑导航栏
+          float: left;
+          line-height: calc(#{$headerHeight} - 0px);
+          margin-left: 0px;
+
+          span a,
+          span {
+            color: inherit !important;
+          }
+        }
+
+        .topmenu-container {
+          // 顶部导航菜单
+          float: left;
+          position: absolute;
+          left: 50px;
+          width: 100%; // 防止菜单自动折叠行为
+        }
+      }
+
+      .header-right {
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: fit-content;
+        max-width: 90%;
+
+        .rightmenu-container {
+          // 右上角菜单
+          position: relative;
+          height: 100%;
+          float: right;
+          background-color: $navbarTheme;
+          display: inline-flex;
+          line-height: calc(#{$headerHeight} - 0px);
+          margin-right: 10px;
+
+          &:focus {
+            outline: none;
+          }
+
+          .right-menu-divider {
+            display: inline-block;
+            padding: 0 px;
+            height: 100%;
+            vertical-align: text-bottom;
+          }
+
+          .right-menu-item {
+            display: inline-block;
+            padding: 0 8px;
+            height: 100%;
+            vertical-align: text-bottom;
+            width: max-content;
+
+            &.hover-effect {
+              cursor: pointer;
+              transition: background .3s;
+
+              &:hover {
+                background: rgba(0, 0, 0, .025)
+              }
+            }
+          }
+        }
+      }
+
+      .avatar {
+        color: #ffffff;
+        fill: #ffffff;
+      }
+
+      // 顶端导航栏el-icon图标样式，控制位置对齐
+      .right-menu-item {
+        .el-icon {
+          // 用户头像下拉图标
+          &.dropdown-icon {
+            padding-top: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// End -----------顶端导航栏样式-----------
+
+// Start -----------白色背景下的顶端导航栏样式调整-----------
+.navbar--white {
+  .navbar-container {
+    &.el-header {
+      color: $navbarColor;
+
+      .header-content {
+        .navbar-icon {
+          // 顶端导航栏图标样式
+          color: $navbarColor;
+          fill: $navbarColor;
+        }
+
+        .navbar-link {
+          color: $navbarColor;
+        }
+
+        // 头像菜单颜色
+        .avatar {
+          color: $navbarColor;
+          fill: $navbarColor;
+        }
+      }
+
+      .el-breadcrumb {
+        color: $navbarColor;
+      }
+    }
+  }
+}
+
+// End -----------白色背景下的顶端导航栏样式调整-----------
+
+
+// Start -----------顶端横向菜单的样式设置-----------
+// 非浅色背景的样式设置
+.navbar-container {
+  &.el-header {
+    .el-menu--horizontal {
+      background-color: transparent; // 与背景颜色一致
+      border-bottom: none;
+
+      &>.el-menu {
+        background-color: $navbarColor;
+
+        .el-sub-menu {
+          background-color: inherit;
+
+          &.is-active {
+            .el-sub-menu__title {
+              // color: $systemTheme !important;
+              color: #ffffff !important;
+            }
+          }
+        }
+      }
+
+      &>.el-menu-item,
+      &>.el-sub-menu .el-sub-menu__title {
+        padding: 0px 8px;
+        height: $headerHeight;
+        line-height: $headerHeight;
+        color: $sidebarColor;
+
+        &>span {
+          max-width: 100%;
+        }
+
+        &:hover {
+          color: #ffffff;
+
+          i {
+            color: #ffffff;
+          }
+        }
+      }
+
+      &>.el-menu-item {
+        padding: 0px 8px;
+        border-bottom: none;
+
+        &:hover {
+          color: #ffffff;
+          background-color: $navbarThemeActive;
+
+          i {
+            color: #ffffff;
+          }
+        }
+
+        &.is-active {
+          background-color: $navbarThemeActive;
+          color: #ffffff !important; // 顶端菜单有背景颜色时设置为白色
+          border-bottom: 4px solid $systemTheme;
+
+          i {
+            color: #ffffff;
+          }
+        }
+      }
+
+      &>.el-sub-menu {
+        &.is-active {
+          .el-sub-menu__title {
+            color: #ffffff;
+            background-color: $navbarThemeActive;
+            border-bottom: 4px solid $systemTheme;
+          }
+        }
+
+        .el-sub-menu__title {
+          &:hover {
+            background-color: $navbarThemeActive;
+          }
+        }
+      }
+
+      .el-menu {
+
+        .el-menu-item.is-active,
+        .el-sub-menu.is-active>.el-sub-menu__title {
+          color: #ffffff;
+        }
+
+        .el-menu-item.is-active {
+          background-color: $systemTheme;
+        }
+      }
+    }
+  }
+
+  // 非浅色背景的样式设置（弹出菜单）
+  .el-menu--horizontal {
+    .el-menu--popup {
+      background-color: $navbarTheme; // 弹出菜单背景调整为默认背景色
+
+      .el-menu-item {
+        color: #ffffff;
+        background-color: $navbarTheme;
+        padding: 0px 20px; // 不受首层菜单的样式影响
+
+        &.is-active {
+          background-color: $navbarThemeActive;
+          border-right: 4px solid $systemTheme;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+// 浅色背景的样式设置
+.navbar--white {
+  .navbar-container {
+    &.el-header {
+      .el-menu--horizontal {
+        .el-menu-item {
+          padding: 0px 8px;
+
+          &:hover {
+            color: $systemTheme;
+            background-color: $navbarThemeActive;
+
+            i {
+              color: inherit;
+            }
+          }
+
+          &.is-active {
+            color: $systemTheme !important;
+            border-bottom: 4px solid $systemTheme;
+            background-color: transparent;
+
+            i {
+              color: inherit;
+            }
+          }
+        }
+
+        &>.el-menu-item {
+          color: $navbarColor;
+        }
+
+        &>.el-sub-menu {
+          &.is-active {
+            .el-sub-menu__title {
+              color: $systemTheme;
+              background-color: $navbarThemeActive;
+              border-bottom: 4px solid $systemTheme;
+
+              i {
+                color: inherit;
+              }
+            }
+          }
+
+          .el-sub-menu__title {
+            color: $navbarColor;
+
+            &:hover {
+              color: $systemTheme;
+              background-color: $navbarThemeActive;
+
+              i {
+                color: inherit;
+              }
+            }
+          }
+        }
+
+        .el-menu {
+          background-color: $navbarThemeActive;
+
+          .el-menu-item {
+            &.is-active {
+              background-color: $navbarThemeActive;
+              border-bottom: none;
+            }
+          }
+
+          .el-sub-menu {
+            &.is-active {
+              .el-sub-menu__title {
+                color: $systemTheme;
+
+                i {
+                  color: inherit;
+                }
+              }
+            }
+          }
+
+          &>.el-sub-menu {
+            .el-sub-menu__title {
+              &:hover {
+                color: $systemTheme;
+
+                i {
+                  color: inherit;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // 浅色背景的样式设置(弹出菜单)
+    .el-menu--horizontal {
+      .el-menu--popup {
+        .el-menu-item {
+          color: $navbarColor;
+
+          &.is-active {
+            color: $systemTheme;
+          }
+
+          &:hover {
+            background-color: $systemThemeLight8;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 非浅色背景的弹出菜单hover样式覆盖配置
+body:not(.navbar--white) {
+  .navbar-container {
+    .el-menu--horizontal {
+      .el-menu--popup {
+        .el-menu-item {
+          &:hover {
+            color: #ffffff;
+            background-color: $systemThemeLight2;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 夜间模式的样式配置
+.night-mode {
+  .navbar-container {
+    &.el-header {
+      color: var(--navbarColor);
+
+      .el-menu--horizontal {
+        .el-menu-item {
+          padding: 0px 8px;
+
+          &:hover {
+            color: #ffffff;
+            background-color: $borderColor;
+
+            i {
+              color: inherit;
+            }
+          }
+
+          &.is-active {
+            color: #ffffff !important;
+            border-bottom: 4px solid $systemTheme;
+            background-color: transparent;
+
+            i {
+              color: inherit;
+            }
+          }
+        }
+
+        &>.el-menu-item {
+          color: var(--navbarColor);
+        }
+
+        &>.el-sub-menu {
+          &.is-active {
+            .el-sub-menu__title {
+              color: #ffffff;
+              background-color: transparent;
+              border-bottom: 4px solid $systemTheme;
+
+              i {
+                color: inherit;
+              }
+            }
+          }
+
+          .el-sub-menu__title {
+            color: var(--navbarColor);
+
+            &:hover {
+              color: #ffffff;
+              background-color: $borderColor;
+
+              i {
+                color: inherit;
+              }
+            }
+          }
+        }
+
+        .el-menu {
+          background-color: $borderColor;
+
+          .el-menu-item {
+            &.is-active {
+              background-color: $borderColor;
+              border-bottom: none;
+            }
+          }
+
+          .el-sub-menu {
+            &.is-active {
+              .el-sub-menu__title {
+                color: #ffffff;
+
+                i {
+                  color: inherit;
+                }
+              }
+            }
+          }
+
+          &>.el-sub-menu {
+            .el-sub-menu__title {
+              &:hover {
+                color: #ffffff;
+
+                i {
+                  color: inherit;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .header-content {
+
+        .navbar-link,
+        .avatar,
+        .navbar-icon {
+          color: var(--navbarColor);
+          fill: var(--navbarColor);
+        }
+      }
+    }
+
+    // 弹出菜单
+    .el-menu--horizontal {
+      .el-menu--popup {
+        background-color: $navbarTheme;
+
+        .el-menu-item {
+          color: var(--navbarColor);
+          background-color: $navbarTheme;
+          padding: 0px 20px; // 不受首层菜单的样式影响
+
+          &.is-active {
+            background-color: $borderColor;
+            border-right: 4px solid $systemTheme;
+            color: #ffffff;
+          }
+
+          &:hover {
+            color: #ffffff;
+            background-color: $borderColor !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// End -----------顶端横向菜单的样式设置-----------
+
+// 顶端导航栏浅色背景的特殊样式
+.navbar--white {
+  .navbar-container {
+    &.el-header {
+      border-bottom: $border;
+    }
+  }
+}
+
+.night-mode {
+  .navbar-container {
+    &.el-header {
+      border-bottom: 1px solid $borderColor;
+    }
+  }
+}

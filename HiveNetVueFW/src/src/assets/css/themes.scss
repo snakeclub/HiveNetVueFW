@@ -1,0 +1,95 @@
+:root {
+  --systemThemeColor: #0960bd;
+  --systemThemeColorActive: #0038ad;
+  --systemThemeColorLight1: #2270c4;
+  --systemThemeColorLight2: #3a80ca;
+  --systemThemeColorLight3: #5390d1;
+  --systemThemeColorLight4: #6ba0d7;
+  --systemThemeColorLight5: #84b0de;
+  --systemThemeColorLight6: #9dbfe5;
+  --systemThemeColorLight7: #b5cfeb;
+  --systemThemeColorLight8: #cedff2;
+  --systemThemeColorLight9: #e6eff8;
+  --navbarThemeColor: #ffffff;
+  --navbarColor: rgba(0, 0, 0, 0.85); // 当navbar背景为白色时
+  --navbarIconSize: 16px;
+  --sidebarThemeColor: #001529;
+  --sidebarColor: #ffffff;
+  --navbarThemeColorActive: #0960bd;
+  // --systemThemeColorActive: #93ffff;
+  --contentBgColor: #f0f2f5;
+  --border-color: #f0f0f0;
+  --el-border-color-base: #dcdfe6;
+  --fontLightColor: #ffffff;
+  --fontLightColorActive: #e6e6e6;
+  --fontDarkColor: rgba(0, 0, 0, 0.85);
+  --fontDarkColorActive: #000000;
+  --fontColor: #ffffff;
+  --fontColorActive: #e6e6e6;
+  // 用于计算高度和宽度的一些设置，可以动态进行修改
+  --sidebarWidth: 200px;  // 左侧菜单栏的宽度
+  --headerHeight: 50px; // 顶部导航栏高度设置
+  --tabsHeight: 30px;  // 页签栏高度
+  --copyrightHeight: 20px;  // 版权栏高度
+  // 通用编辑表单的一些控制样式变量
+  --editFormMaxWidth: 2048px;  // 表单页面的最大宽度
+}
+
+// 夜间模式的颜色设置
+.night-mode {
+  --navbarThemeColor: #1f1f1f;
+  --navbarColor: #c8c8c8;
+  --sidebarThemeColor: #1f1f1f;
+  --sidebarColor: #c8c8c8;
+  --contentBgColor: #000000;
+  --border-color: #303030;
+  --el-border-color-base: #303030;
+  --el-border-color-light: #303030;
+  --label-font-color: #c8c8c8;
+}
+
+$systemTheme: var(--systemThemeColor); // 系统主颜色
+$systemThemeActive: var(--systemThemeColorActive); // 系统主题激活颜色
+// 系统九级颜色
+$systemThemeLight1: var(--systemThemeColorLight1);
+$systemThemeLight2: var(--systemThemeColorLight2);
+$systemThemeLight3: var(--systemThemeColorLight3);
+$systemThemeLight4: var(--systemThemeColorLight4);
+$systemThemeLight5: var(--systemThemeColorLight5);
+$systemThemeLight6: var(--systemThemeColorLight6);
+$systemThemeLight7: var(--systemThemeColorLight7);
+$systemThemeLight8: var(--systemThemeColorLight8);
+$systemThemeLight9: var(--systemThemeColorLight9);
+$navbarTheme: var(--navbarThemeColor); // 顶部导航栏底色
+$sidebarTheme: var(--sidebarThemeColor); // 左侧菜单底色
+$navbarThemeActive: var(--navbarThemeColorActive); // 深色主题时顶端菜单激活菜单背景颜色
+// $systemThemeActive: var(--systemThemeColorActive); // 白色主题时的激活菜单的背景颜色
+$sidebarThemeGroup: #444b51;
+$sidebarThemeBg: #001529;
+$sidebarColor: var(--sidebarColor);
+$navbarColor: var(--navbarColor); // 顶部导航栏文字颜色
+$navbarIconSize: var(--navbarIconSize); // 顶部导航栏的图标大小
+$fontLightColor: var(--fontLightColor); // 浅色字体颜色（配合深色背景使用）
+$fontLightColorActive: var(--fontLightColorActive); // 浅色字体颜色激活状态（配合深色背景使用）
+$fontDarkColor: var(--fontDarkColor); // 深色字体颜色（配合浅色背景使用）
+$fontDarkColorActive: var(--fontDarkColorActive); // 深色字体颜色激活状态（配合浅色背景使用）
+$fontColor: var(--fontColor); // 配合当前主题颜色所使用的字体颜色
+$fontColorActive: var(--fontColorActive); // 配合当前主题颜色所使用的字体颜色(激活状态)
+
+$contentBgColor: var(--contentBgColor);
+
+$sidebarWidth: var(--sidebarWidth); // 左侧菜单栏的宽度
+$headerHeight: var(--headerHeight); // 顶部导航栏高度设置
+$tabsHeight: var(--tabsHeight); // 页签栏位高度
+$copyrightHeight: var(--copyrightHeight); // copyright的高度
+
+// 边距
+$marginWidth: 1rem;
+$paddingWidth: 1rem;
+@media screen and (max-width: 1000px) {
+  $paddingWidth: 10px;
+}
+
+// 边框
+$borderColor: var(--border-color);
+$border: 1px solid $borderColor;

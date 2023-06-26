@@ -1,0 +1,144 @@
+/* 页签栏的样式 */
+@import '../themes.scss';
+@import '../mixin.scss';
+
+
+// ----------tabs----------
+.tabs-content {
+  $_svgWidth: 32px;
+  display: flex;
+  align-items: center;
+  height: $tabsHeight;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+
+  .tabs-svg {
+    width: $_svgWidth !important;
+    height: calc($tabsHeight - 4px) !important;
+    padding: 6px 0;
+    color: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .tabs-scroll {
+    width: calc(100% - #{$_svgWidth});
+    height: 100%;
+    top: 2px;
+    position: relative;
+    overflow: hidden;
+
+    .el-tabs__nav-wrap.is-scrollable {
+      padding: 0 $_svgWidth + 1px;
+    }
+
+    .el-tabs__header {
+      margin: 0;
+      border-bottom: 0;
+    }
+
+    .el-tabs__content {
+      display: none;
+    }
+
+    .el-tabs__nav {
+      border: none;
+    }
+
+    .el-tabs__nav-next,
+    .el-tabs__nav-prev {
+      line-height: calc($tabsHeight - 4px);
+      font-size: 14px;
+      width: $_svgWidth;
+      text-align: center;
+
+      &:not(.is-disabled):hover {
+        color: #000;
+      }
+
+      &.is-disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+
+    .el-tabs__item {
+      height: calc($tabsHeight - 4px);
+      line-height: calc($tabsHeight - 5px);
+      font-size: 12px;
+      margin: 0 2px;
+      border: 1px solid #d9d9d9;
+      border-radius: 2px;
+      padding: 0 10px !important;
+
+      &:first-child {
+        border-left: 1px solid #d9d9d9;
+      }
+
+      &:last-child {
+        border-right: 1px solid #d9d9d9;
+      }
+
+      &.is-active {
+        border-color: $systemTheme;
+        background-color: $systemTheme;
+        color: #ffffff;
+      }
+    }
+
+    .tabs-icon {
+      margin-right: 5px;
+      margin-bottom: 2px; // 让图标居中显示
+    }
+  }
+}
+
+.tabs-menu {
+  padding: 6px 0;
+
+  .el-dropdown-menu__item {
+    line-height: 30px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+
+    &:not(.is-disabled):hover {
+      background-color: #f2f2f2;
+    }
+  }
+
+  .el-divider {
+    margin: 6px 0;
+  }
+
+  i {
+    font-size: 18px;
+
+    &.left {
+      transform: rotate(90deg);
+    }
+
+    &.right {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.night-mode {
+  .tabs-content {
+    background-color: $navbarTheme;
+
+    .el-tabs__item {
+      color: $navbarColor;
+      border-color: $borderColor;
+    }
+
+    // 设置菜单图标颜色
+    .tabs-svg {
+      color: $navbarColor;
+      border-color: $borderColor;
+    }
+  }
+}
